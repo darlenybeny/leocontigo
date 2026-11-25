@@ -1,5 +1,7 @@
+
 export function mostrarPantallaInicio(
-  contenedor: HTMLElement
+  contenedor: HTMLElement,
+  alExplorarLectura: () => void
 ): void {
   contenedor.innerHTML = `
     <header class="encabezado">
@@ -62,10 +64,14 @@ export function mostrarPantallaInicio(
               </button>
             </div>
 
-            <a class="boton-demostracion" href="#lecturas">
+            <button
+              class="boton-demostracion"
+              type="button"
+              data-lectura-demostracion
+            >
               <span aria-hidden="true">✦</span>
               Explorar una lectura de demostración
-            </a>
+            </button>
 
             <p
               id="aviso-acceso"
@@ -159,12 +165,23 @@ export function mostrarPantallaInicio(
       <section class="seccion demostracion" id="lecturas">
         <div class="demostracion-contenido">
           <span class="etiqueta">✦ Biblioteca de aventuras</span>
+
           <h2>Una historia te está esperando</h2>
+
           <p>
-            Muy pronto podrás descubrir nuestra primera lectura
-            de demostración y responder preguntas divertidas.
+            Descubrí nuestra primera lectura de demostración:
+            El secreto del bosque mágico. Acompañá a Lumi
+            en una aventura llena de amistad y magia.
           </p>
-          <span class="proximamente">Próximamente</span>
+
+          <button
+            class="boton boton-estudiante"
+            type="button"
+            data-lectura-demostracion
+          >
+            ¡Comenzar aventura!
+            <span aria-hidden="true">➜</span>
+          </button>
         </div>
 
         <div class="demostracion-ilustracion">
@@ -187,17 +204,21 @@ export function mostrarPantallaInicio(
 
         <div class="conocenos-contenido">
           <span class="etiqueta">✦ Nuestra misión</span>
+
           <h2>Conoce LeoContigo</h2>
+
           <p>
             LeoContigo es una plataforma educativa creada para
             fortalecer la comprensión lectora en niños de tercer
             grado mediante historias, personajes y actividades
             interactivas.
           </p>
+
           <p>
             Queremos que cada estudiante descubra que leer
             puede convertirse en una aventura llena de imaginación.
           </p>
+
           <a class="enlace-conocenos" href="#como-funciona">
             Descubrí cómo funciona
             <span aria-hidden="true">➜</span>
@@ -216,6 +237,7 @@ export function mostrarPantallaInicio(
   `;
 
   configurarAccesosPorRol(contenedor);
+  configurarAccesoLectura(contenedor, alExplorarLectura);
 }
 
 function configurarAccesosPorRol(
@@ -240,5 +262,18 @@ function configurarAccesosPorRol(
             `El acceso para ${rol === 'docente' ? 'docentes' : 'estudiantes'} estará disponible próximamente.`;
         }
       });
+    });
+}
+
+function configurarAccesoLectura(
+  contenedor: HTMLElement,
+  alExplorarLectura: () => void
+): void {
+  contenedor
+    .querySelectorAll<HTMLButtonElement>(
+      '[data-lectura-demostracion]'
+    )
+    .forEach((boton) => {
+      boton.addEventListener('click', alExplorarLectura);
     });
 }
