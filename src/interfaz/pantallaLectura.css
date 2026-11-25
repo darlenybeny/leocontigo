@@ -1,0 +1,186 @@
+.pantalla-lectura {
+  min-height: 100vh;
+  padding: 24px 20px 60px;
+  background: linear-gradient(
+    135deg,
+    #f8edff,
+    #ede9fe,
+    #e0f7fa
+  );
+}
+
+.lectura-navegacion {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 8px 25px rgba(91, 65, 150, 0.08);
+}
+
+.lectura-marca {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #7c3aed;
+}
+
+.lectura-marca span {
+  color: #0097a7;
+}
+
+.lectura-volver {
+  padding: 12px 20px;
+  background: #f3e8ff;
+  color: #7c3aed;
+  border: none;
+  border-radius: 14px;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lectura-volver:hover {
+  background: #e9d5ff;
+  color: #6d28d9;
+}
+
+.lectura-aventura {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lectura-etiqueta {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 30px;
+  background: white;
+  color: #7c3aed;
+  font-weight: bold;
+}
+
+.lectura-aventura h1 {
+  margin: 24px 0;
+  color: #581c87;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.2;
+}
+
+.lectura-ilustracion {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  margin: 0 auto 24px;
+  object-fit: contain;
+}
+
+.lectura-libro {
+  padding: 48px;
+  background: #fffefa;
+  border: 2px solid #f1e5ff;
+  border-radius: 32px;
+  box-shadow: 0 16px 40px rgba(91, 65, 150, 0.1);
+  text-align: left;
+}
+
+#lectura-contenido p {
+  margin: 0 0 24px;
+  color: #403653;
+  font-size: 1.25rem;
+  line-height: 1.9;
+  letter-spacing: 0.2px;
+}
+
+.lectura-acciones {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 2px dashed #e9d5ff;
+  text-align: center;
+}
+
+.lectura-acciones p {
+  margin-bottom: 20px;
+  color: #6d28d9;
+  font-weight: bold;
+}
+
+.lectura-comenzar {
+  padding: 18px 32px;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    #a855f7,
+    #6d28d9
+  );
+  color: white;
+  font: inherit;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lectura-comenzar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(109, 40, 217, 0.2);
+}
+
+.lectura-volver:focus-visible,
+.lectura-comenzar:focus-visible {
+  outline: 3px solid #f59e0b;
+  outline-offset: 4px;
+}
+
+@media (max-width: 600px) {
+  .pantalla-lectura {
+    padding: 16px 14px 40px;
+  }
+
+  .lectura-navegacion {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 18px;
+    margin-bottom: 28px;
+  }
+
+  .lectura-marca {
+    font-size: 1.4rem;
+  }
+
+  .lectura-libro {
+    padding: 24px 20px;
+    border-radius: 24px;
+  }
+
+  .lectura-ilustracion {
+    max-width: 340px;
+  }
+
+  #lectura-contenido p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+
+  .lectura-comenzar {
+    width: 100%;
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lectura-comenzar {
+    transition: none;
+  }
+
+  .lectura-comenzar:hover {
+    transform: none;
+  }
+}
