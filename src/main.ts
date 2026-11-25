@@ -1,8 +1,8 @@
-
 import './style.css';
 
 import { mostrarPantallaInicio } from './interfaz/pantallaInicio';
 import { mostrarPantallaLectura } from './interfaz/pantallaLectura';
+import { mostrarPantallaDesafio } from './interfaz/pantallaDesafio';
 import { lecturaDemostracion } from './lecturas/lecturaDemostracion';
 
 const app = document.querySelector<HTMLDivElement>('#app');
@@ -30,7 +30,18 @@ function irALectura(): void {
 }
 
 function irAlDesafio(): void {
-  window.alert('¡Pronto comenzaremos el desafío de comprensión!');
+  mostrarPantallaDesafio(
+    contenedor,
+    lecturaDemostracion,
+    irAResultados,
+    irALectura
+  );
+
+  window.scrollTo(0, 0);
+}
+
+function irAResultados(): void {
+  window.alert('¡Completaste el desafío de comprensión!');
 }
 
 irAlInicio();
