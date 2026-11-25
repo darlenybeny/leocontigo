@@ -1,9 +1,15 @@
+
 import './style.css';
 
 import { mostrarPantallaInicio } from './interfaz/pantallaInicio';
 import { mostrarPantallaLectura } from './interfaz/pantallaLectura';
 import { mostrarPantallaDesafio } from './interfaz/pantallaDesafio';
+import { mostrarPantallaResultados } from './interfaz/pantallaResultados';
+
 import { lecturaDemostracion } from './lecturas/lecturaDemostracion';
+
+import { calcularPuntaje } from './evaluacion/calcularPuntaje';
+import { obtenerResultado } from './evaluacion/obtenerResultado';
 
 const app = document.querySelector<HTMLDivElement>('#app');
 
@@ -40,8 +46,32 @@ function irAlDesafio(): void {
   window.scrollTo(0, 0);
 }
 
-function irAResultados(): void {
-  window.alert('¡Completaste el desafío de comprensión!');
+function irAResultados(
+  respuestas: Readonly<Record<string, string>>
+): void {
+  const preguntas = lecturaDemostracion.preguntas;
+  const totalPreguntas = preguntas.length;
+
+  const puntaje = calcularPuntaje(
+    preguntas,
+    respuestas
+  );
+
+  const resultado = obtenerResultado(
+    puntaje,
+    totalPreguntas
+  );
+
+  mostrarPantallaResultados(
+    contenedor,
+    puntaje,
+    totalPreguntas,
+    resultado,
+    irALectura,
+    irAlInicio
+  );
+
+  window.scrollTo(0, 0);
 }
 
 irAlInicio();
