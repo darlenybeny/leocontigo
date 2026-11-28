@@ -1,0 +1,37 @@
+name: Integracion continua - LeoContigo
+
+on:
+  push:
+    branches:
+      - main
+      - 'ci/**'
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  calidad:
+    name: Pruebas y compilacion
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Ejecutar pruebas unitarias
+        run: npm test
+
+      - name: Compilar proyecto
+        run: npm run build
